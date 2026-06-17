@@ -326,7 +326,6 @@ function showTab(name) {
   currentTab = name;
   if(name === 'list') renderList();
   if(name === 'hanzi') initHanziRandom();
-  if(name === 'check') { /* init check if needed */ }
 }
 
 function showToast(msg, ms=2000) {
@@ -588,16 +587,14 @@ function renderCheckCard() {
   let answerType = '';
 
   if (checkMode === 'hanzi') {
-    // Show meaning or pinyin, user types Hanzi
-    const showMeaning = Math.random() > 0.5;
-    questionDisplay = showMeaning ? w.meaning : w.pinyin;
-    hintText = showMeaning ? 'Nghĩa Tiếng Việt' : 'Pinyin';
+    // Chế độ kiểm tra chữ Hán: hiển thị nghĩa tiếng Việt
+    questionDisplay = w.meaning;
+    hintText = 'Nghĩa Tiếng Việt';
     answerType = 'Hán tự';
   } else {
-    // Show Hanzi or pinyin, user types meaning
-    const showHanzi = Math.random() > 0.5;
-    questionDisplay = showHanzi ? w.hanzi : w.pinyin;
-    hintText = showHanzi ? 'Hán tự' : 'Pinyin';
+    // Chế độ kiểm tra nghĩa tiếng Việt: hiển thị chữ Hán
+    questionDisplay = w.hanzi;
+    hintText = 'Hán tự';
     answerType = 'Nghĩa Tiếng Việt';
   }
 
